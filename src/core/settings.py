@@ -53,7 +53,15 @@ class Settings(BaseSettings):
     # Paths
     # ------------------------------------------------------------------
     LOGS_DIR: Path = BASE_DIR / "LOGS"
-    PROMPTS_DIR: Path = BASE_DIR / "src" / "prompts"
+    AI_FILES: Path = BASE_DIR / "src" / "output" / "ai_files"
+    AI_RESPONSE: Path = BASE_DIR / "src" / "output" / "ai_response"
+
+    # Files
+    SUPERVISOR_PROMPT: Path = BASE_DIR / "src" / "prompts" / "supervisor.md"
+    RESEARCHER_PROMPT: Path = BASE_DIR / "src" / "prompts" / "researcher.md"
+    COPYWRITER_PROMPT: Path = BASE_DIR / "src" / "prompts" / "copywriter.md"
+    LINKEDIN_EXAMPLE: Path = BASE_DIR / "src" / "prompts" / "examples" / "linkedin_example.md"
+    BLOG_EXAMPLE: Path = BASE_DIR / "src" / "prompts" / "examples" / "blog_example.md"
 
     # ------------------------------------------------------------------
     # Directory Management

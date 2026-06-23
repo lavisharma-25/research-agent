@@ -4,7 +4,7 @@ from src.tools.researcher_tools.search_web import search_web
 from src.tools.researcher_tools.extract_content import extract_content_from_webpage
 from src.tools.researcher_tools.generate_report import generate_research_report
 
-from src.utils.load_prompt import load_prompt
+from utils.load_file import load_prompt
 from src.services.llm_service import llm_model_flash
 
 researcher_agent = create_agent(
@@ -13,6 +13,7 @@ researcher_agent = create_agent(
     system_prompt=load_prompt(file_name="researcher")
 )
 
+# import json
 # import asyncio
 
 # async def main():
