@@ -1,6 +1,6 @@
 from langchain_core.tools import tool
 
-from core.logs import logger
+from src.core.logs import logger
 from src.models.researcher_schema import ResearchReport
 
 

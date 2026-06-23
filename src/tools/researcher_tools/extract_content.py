@@ -2,7 +2,7 @@ from typing import List
 from langchain_core.tools import tool
 from langchain_tavily import TavilyExtract
 
-from core.logs import logger
+from src.core.logs import logger
 from src.core.settings import settings
 
 
