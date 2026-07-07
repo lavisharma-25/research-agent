@@ -34,29 +34,49 @@ class Settings(BaseSettings):
     TAVILY_API_KEY: str = Field(...)
 
     # ------------------------------------------------------------------
+    # LLM Settings
+    # ------------------------------------------------------------------
+    LLM_PROVIDER: str = "openai"  # gemini | nvidia | openai | claude
+    LLM_MODEL: str = "moonshotai/kimi-k2.6"  # gemini-2.5-pro | gemini-2.5-flash | gemini-2.5-flash-lite | moonshotai/kimi-k2.6 | gpt-4 | gpt-3.5-turbo | claude-2
+
+    # ------------------------------------------------------------------
     # Gemini Settings
     # ------------------------------------------------------------------
+    GEMINI_PROVIDER:str = "vertex"  # vertex | api_key
     GEMINI_API_KEY: str = Field(...)
     LOCATION: str = Field(default="global")
-
     GEMINI_MODEL_PRO: str = Field(default="gemini-2.5-pro")
     GEMINI_MODEL_FLASH: str = Field(default="gemini-2.5-flash")
     GEMINI_MODEL_LITE: str = Field(default="gemini-2.5-flash-lite")
-
-    # ------------------------------------------------------------------
     # Google Cloud Settings
-    # ------------------------------------------------------------------
     SERVICE_ACCOUNT_FILE_PATH: Path = load_json_path("model_credentials")
     SERVICE_ACCOUNT_SCOPE: List[str] = ["https://www.googleapis.com/auth/cloud-platform"]
+
+    # ------------------------------------------------------------------
+    # Nvidia Settings
+    # ------------------------------------------------------------------
+    NVIDIA_API_KEY: str = Field(...)
+
+    # ------------------------------------------------------------------
+    # OpenAI Settings
+    # ------------------------------------------------------------------
+    OPENAI_API_KEY: str = Field(...)
+
+    # ------------------------------------------------------------------
+    # Claude Settings
+    # ------------------------------------------------------------------
+    CLAUDE_API_KEY: str = Field(...)
 
     # ------------------------------------------------------------------
     # Paths
     # ------------------------------------------------------------------
     LOGS_DIR: Path = BASE_DIR / "LOGS"
-    AI_FILES: Path = BASE_DIR / "src" / "output" / "ai_files"
-    AI_RESPONSE: Path = BASE_DIR / "src" / "output" / "ai_response"
+    AI_FILES: Path = BASE_DIR / "output" / "ai_files"
+    AI_RESPONSE: Path = BASE_DIR  / "output" / "ai_response"
+    CHAT_HISTORY_PATH: Path = BASE_DIR / "output" / "db" / "chat_history"
 
     # Files
+    WORFLOW_IMAGE_PATH: Path = BASE_DIR / "output" / "workflow.png"
     SUPERVISOR_PROMPT: Path = BASE_DIR / "src" / "prompts" / "supervisor.md"
     RESEARCHER_PROMPT: Path = BASE_DIR / "src" / "prompts" / "researcher.md"
     COPYWRITER_PROMPT: Path = BASE_DIR / "src" / "prompts" / "copywriter.md"
@@ -72,6 +92,9 @@ class Settings(BaseSettings):
         """
         directories = [
             self.LOGS_DIR,
+            self.AI_FILES,
+            self.AI_RESPONSE,
+            self.CHAT_HISTORY_PATH
         ]
 
         for directory in directories:

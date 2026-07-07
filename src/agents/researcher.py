@@ -6,10 +6,10 @@ from src.tools.researcher_tools.generate_report import generate_research_report
 
 from src.core.settings import settings
 from src.utils.load_file import load_file
-from src.services.llm_service import llm_model_flash
+from src.services.llm_service.factory import llm
 
 researcher_agent = create_agent(
-    model=llm_model_flash,
+    model=llm,
     tools=[search_web, extract_content_from_webpage, generate_research_report],
     system_prompt=load_file(file_path=settings.RESEARCHER_PROMPT)
 )

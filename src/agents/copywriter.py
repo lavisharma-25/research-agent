@@ -8,7 +8,7 @@ from src.tools.copywriter_tools.generate_blog_post import generate_blog_post
 
 from src.utils.load_file import load_file
 from src.core.settings import settings
-from src.services.llm_service import llm_model_flash
+from src.services.llm_service.factory import llm
 
 copywriter_prompt = load_file(file_path=settings.COPYWRITER_PROMPT)
 linkedin_example = load_file(file_path=settings.LINKEDIN_EXAMPLE)
@@ -21,7 +21,7 @@ tools = [
 ]
 
 copywriter_agent = create_agent(
-    model=llm_model_flash,
+    model=llm,
     tools=tools,
     system_prompt = SystemMessage(
         content=copywriter_prompt.format(
